@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: reactiveaccount-service
+  freemarker:
+    enabled: true
+  data:
+    mongodb:
+      port: 7767
+      
+server:
+  port: 7766
+  
+#Actuator info endpoint change
+management:
+  endpoints:
+    web:
+      base-path: /
+    path-mapping:
+      info: info
+
+#ActuatorInfo
+info:
+  app:
+    name: Reactive Mongo Microservice example
+    description: This is my first reactive microservice :)
+    version: 1.0.0
+    
+#Eureka
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
